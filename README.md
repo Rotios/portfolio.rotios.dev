@@ -30,5 +30,4 @@ npm run dev
 This project was setup using Nest.js and NextUI under MIT license. 
 
 ## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+Next.js and NextUI are licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
