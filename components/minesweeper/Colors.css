@@ -1,0 +1,55 @@
+
+.color--skyBlue {
+    color: rgb(52, 152, 219);
+}
+
+.color--cloud {
+    color: rgb(236, 240, 241);
+}
+
+.color--grey {
+    color: rgb(127, 140, 141);
+}
+
+.color--navy {
+    color : #2c3e50;
+}
+
+.color--darkgrey {
+    color: rgb(44, 62, 80);
+}
+
+.color--green {
+    color: #45a29e;
+}
+
+.color--blue {
+    color: #52b3d9;
+}
+
+
+.background--green {
+    background-color: #45a29e;
+}
+
+
+.background--cloud {
+    background-color: rgb(236, 240, 241);
+}
+
+.background--darkgrey {
+    background-color: rgb(44, 62, 80);
+}
+
+.background--gray {
+    background-color: #3c3c3c;
+}
+
+.background--skyBlue {
+  background-color: rgb(52, 152, 219);
+}
+
+.header {
+    background-color: rgb(44, 62, 80);  
+}
+
