@@ -1,11 +1,16 @@
+import { StaticImageData } from 'next/image'
+import gsLogo from './GSSLogo.png'
+import msLogo from '/minesweeper_detector.jpeg'
+import taoftLogo from './TAOFT.jpeg'
 
 export interface ProjectConfig {
     description: string
     summary: string
     name: string
     href: string
-    imageSrc: string
+    imageSrc: StaticImageData
 }
+
 export const projectsConfig : ProjectConfig[] = [
     {
         name: "Game Stat Simulators",
@@ -15,7 +20,7 @@ any amount. It uses simple maths to calculate your expected average and also sim
 your stats are reached. The simulations are entirely based on the stats you provide as input.
 Game Stat Simulators was build using Lit JS and Vaadin components.`,
         href: 'https://game-stat-simulators.rotios.com/',
-        imageSrc: '/GSSLogo.jpeg'
+        imageSrc: gsLogo
     },
     {
         name: "Minesweeper",
@@ -25,13 +30,13 @@ Game Stat Simulators was build using Lit JS and Vaadin components.`,
             The layout is 10x10 and includes 12 mines. Can you find them all?
         `,
         href: '/projects/minesweeper',
-        imageSrc: '/minesweeper_detector.jpeg'
+        imageSrc: msLogo
     },
     {
         name: "The Adventures of Fat Tone",
         summary: "Roguelike game using Rot.JS!",
         description: `A short Roguelike game written with the Rot.JS library. In conjunction with John Freeman - https://www.github.com/jcf1.`,
     href: 'https://rotios.github.io/The-Adventures-of-Fat-Tone/',
-    imageSrc: '/TAOFT.jpeg'
+    imageSrc: taoftLogo
     }
 ]
