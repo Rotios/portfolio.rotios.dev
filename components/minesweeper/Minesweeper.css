@@ -82,24 +82,17 @@ board::before, board::after{
 
 .hint-buttons {
   text-align: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  margin-bottom:1rem;
-  border-radius: 1rem;
-  line-height: 3rem;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  margin: 18px;
+  line-height: 1rem;
   background-color: rgb(44, 62, 80);
   color: white;
-  width: 14rem;
 }
 
 .hint-buttons-container {
   align-items: center;
   text-align: center;
+  display: inline-flex;
+  flex-direction: row;
 }
 
 .hint-buttons:hover {

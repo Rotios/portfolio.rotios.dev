@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import './Minesweeper.css'
+import {Button} from "@nextui-org/button";
 
 export default class Solver extends Component {
     constructor(props) {
@@ -196,15 +197,15 @@ export default class Solver extends Component {
     render() {
         return (
             <div className='hint-buttons-container'>
-                <button className='hint-buttons' onClick={()=>this.findBomb()}>
+                <Button className='hint-buttons' onClick={()=>this.findBomb()}>
                     Find Bomb for Me
-                </button>
-                <button className='hint-buttons' onClick={()=>this.getHint()}>
+                </Button>
+                <Button className='hint-buttons' onClick={()=>this.getHint()}>
                     Get Hint
-                </button>
-                <button className='hint-buttons' onClick={()=>this.takeStep()}>
+                </Button>
+                <Button className='hint-buttons' onClick={()=>this.takeStep()}>
                     Take Step
-                </button>
+                </Button>
             </div>
             
         );
