@@ -13,7 +13,7 @@ export default function ProjectsPage() {
       </div>
 
       <div className="flex gap-3 flex-col">
-      <ul className="lg:flex flex-col gap-4 justify-start ml-2">
+      <ul className="flex flex-col gap-4 justify-start ml-2">
       {projectsConfig.map(project=> {
         return (
         <Card key={project.name} className="max-w-[500px]">
