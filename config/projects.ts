@@ -18,7 +18,7 @@ Game Stat Simulators was build using Lit JS and Vaadin components.`,
     },
     {
         name: "Minesweeper",
-        summary: "Lit JS website for caulcating stat increases.",
+        summary: "React Minesweeper component with solver.",
         description: `A project from a previous react website ported over to NextUI.
             This minesweeper project includes buttons to help you solve the minesweeper puzzle.
             The layout is 10x10 and includes 12 mines. Can you find them all?
