@@ -2,7 +2,6 @@ import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
-import {Divider} from "@nextui-org/divider";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 
@@ -27,7 +26,7 @@ export default function Home() {
             radius: "full",
             variant: "shadow",
           })}
-          href={siteConfig.links.docs}
+          href={siteConfig.links.linkedIn}
         >
           <i className="fab fa-linkedin" />
           LinkedIn
@@ -43,15 +42,19 @@ export default function Home() {
         </Link>
       </div>
 
+      <div className="flex gap-3">
 
-      <Divider className="my-4 max-w-lg"  />
-      <div>
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            <p>Welcome to my personal development website.</p>
-          </span>
-        </Snippet>
+      <Link
+          isExternal
+          className={buttonStyles({ variant: "bordered", radius: "full" })}
+          href={siteConfig.links.resume}
+        >
+        <i className="fa fa-file"></i>
+          Resume
+        </Link>
       </div>
+
+
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="bordered">
           <span>
@@ -59,8 +62,6 @@ export default function Home() {
           </span>
         </Snippet>
       </div>
-
-
     </section>
   );
 }

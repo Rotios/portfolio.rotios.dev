@@ -7,14 +7,18 @@ export default function ProjectsPage() {
       <div>
         <h1 className={title()}>Minesweeper</h1>
       </div>
-      <div >
-        <p >A project from a previous react website ported over to NextUI.</p>
-      </div>
+      <div>
+      <div className="py-4 text-left">
 
-      <div >
+        <p >A project from a previous react website ported over to NextUI.
+            This minesweeper project includes buttons to help you solve the minesweeper puzzle.
+            The layout is 10x10 and includes 12 mines. Can you find them all?
+        </p>
+        </div>
+      </div>
+      <div className="py-4">
         <Minesweeper></Minesweeper>
       </div>
-
     </div>
   );
 }

@@ -15,13 +15,10 @@ export default class Minesweeper extends Component {
 
     render() {
       return (
-            <section className="project background--gray">
-                    <h3>Minesweer</h3>
-                    <div className="game background--hidden">
-                      <br/>
-                        <Board height={10} width={10} numMines={12}></Board>
-                    </div>
-            </section>
+          <div className="game background--hidden">
+            <br/>
+              <Board height={10} width={10} numMines={12}></Board>
+          </div>
       );
     }
   }
