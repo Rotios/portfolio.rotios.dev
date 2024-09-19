@@ -21,7 +21,6 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">Rotios.io</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -36,7 +35,6 @@ export const Navbar = () => {
               </NextLink>
             </NavbarItem>
           ))}
-          </ul>
       </NavbarContent>
 
       <NavbarContent
