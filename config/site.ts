@@ -17,6 +17,6 @@ export const siteConfig = {
     github: "https://github.com/rotios",
     linkedIn: "https://github.com/rotios",
     docs: "https://nextui.org",
-    resume: "https://github.rotios.io/files/RivasResume.pdf"
+    resume: "https://rotios.dev/files/RivasResume.pdf"
   },
 };
