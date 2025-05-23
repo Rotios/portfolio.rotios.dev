@@ -7,6 +7,15 @@ export interface ProjectConfig {
 }
 export const projectsConfig : ProjectConfig[] = [
     {
+        name: "Contemporaries",
+        summary: "See who lived alongside any historical figure.",
+        description: `This website allows you to search for any historical figure and see who lived alongside them.
+        It uses a large dataset of historical figures and their birth and death dates to find contemporaries.
+        The website is built using SolidJS and the TimelineJS library.`,
+        href: 'https://rotios.github.io/contemporaries/',
+        imageSrc: '/Contemporaries.png'
+    },
+    {
         name: "Game Stat Simulators",
         summary: "Lit JS website for caulcating stat increases.",
         description: `This website will help you calculate how many games you need to play in order to increase your stats by
