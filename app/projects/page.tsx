@@ -1,8 +1,8 @@
 import { title } from "@/components/primitives";
-import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
-import {Image} from "@nextui-org/image";
-import {Divider} from "@nextui-org/divider";
-import {Link} from "@nextui-org/link";
+import {Card, CardHeader, CardBody, CardFooter} from "@heroui/card";
+import {Image} from "@heroui/image";
+import {Divider} from "@heroui/divider";
+import {Link} from "@heroui/link";
 import { projectsConfig } from "@/config/projects";
 
 export default function ProjectsPage() {

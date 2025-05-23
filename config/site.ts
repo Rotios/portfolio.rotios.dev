@@ -3,20 +3,20 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "Jose Rivas-Garcia",
   description: "A personal development website.",
-  navItems: [{
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Projects",
-    href: "/projects",
-  },
-
+  navItems: [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Projects",
+      href: "/projects",
+    },
   ],
   links: {
     github: "https://github.com/rotios",
     linkedIn: "https://www.linkedin.com/in/rotios/",
-    docs: "https://nextui.org",
+    docs: "https://www.heroui.com",
     resume: "https://rotios.dev/files/RivasResume.pdf"
   },
 };

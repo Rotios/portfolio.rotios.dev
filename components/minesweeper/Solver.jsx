@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import './Minesweeper.css'
-import {Button} from "@nextui-org/button";
+import {Button} from "@heroui/button";
 
 export default class Solver extends Component {
     constructor(props) {
