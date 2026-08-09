@@ -151,47 +151,64 @@ export default class Solver extends Component {
 
         possibleBombs = bombsToCheck
 
-        let expansions = new Set()
+        let expansionKeys = new Set()
         possibleBombs.map((bomb) => {
             let x = bomb.xPos
             let y = bomb.yPos
             data[x][y].isFlagged = true
-            
+
             let minX = (x > 0) ? x-1: x
-            
+
             for (minX; minX < width && minX < x + 2; minX++) {
                 let minY = (y > 0) ? y-1: y
                 for (minY; minY < height && minY < y + 2; minY++) {
                     if (!data[minX][minY].isHidden) {
                         data[minX][minY].value -= 1
                         if (data[minX][minY].value === 0) {
-                            expansions.add({xPos: minX, yPos: minY})
+                            expansionKeys.add(minX * height + minY)
                         }
                     }
                 }
             }
         })
 
-        let clickable = new Set()
-        expansions = [... expansions]
+        let expansions = [...expansionKeys].map((key) => ({
+            xPos: Math.floor(key / height),
+            yPos: key % height
+        }))
+
+        let clickableMap = new Map()
 
         expansions.map((exp) => {
             let x = exp.xPos
             let y = exp.yPos
-            
+            let bombKey = x * height + y
+
             let minX = (x > 0) ? x-1: x
-            
+
             for (minX; minX < width && minX < x + 2; minX++) {
                 let minY = (y > 0) ? y-1: y
                 for (minY; minY < height && minY < y + 2; minY++) {
                     if (data[minX][minY].isHidden && !data[minX][minY].isFlagged) {
-                        clickable.add({xPos: minX, yPos: minY, bomb: {xPos: x, yPos: y}})
+                        let cellKey = minX * height + minY
+                        let bombKeys = clickableMap.get(cellKey) || new Set()
+                        bombKeys.add(bombKey)
+                        clickableMap.set(cellKey, bombKeys)
                     }
                 }
             }
         })
-        
-        return {possibleBombs: possibleBombs, cells: expandableCells, clickable: [... clickable]}
+
+        let clickable = [...clickableMap.entries()].map(([cellKey, bombKeys]) => ({
+            xPos: Math.floor(cellKey / height),
+            yPos: cellKey % height,
+            bombs: [...bombKeys].map((bombKey) => ({
+                xPos: Math.floor(bombKey / height),
+                yPos: bombKey % height
+            }))
+        }))
+
+        return {possibleBombs: possibleBombs, cells: expandableCells, clickable: clickable}
     }
 
     render() {

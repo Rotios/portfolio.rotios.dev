@@ -65,7 +65,9 @@ export default class Board extends Component {
                         let minY = (y>0) ? y - 1 : y
 
                         for (minY; minY< (y+2) && minY < height; minY++) {
-                            data[minX][minY].value+=1
+                            if (!data[minX][minY].isMine) {
+                                data[minX][minY].value+=1
+                            }
                         }
                     }
                 }
@@ -88,7 +90,7 @@ export default class Board extends Component {
     getNextMinePos(height, width) {
         let randVal = Math.floor(Math.random() * height*width)
 
-        let x = Math.floor(randVal/width)
+        let x = Math.floor(randVal/height)
         let y = randVal % height
         
         return [x,y]
