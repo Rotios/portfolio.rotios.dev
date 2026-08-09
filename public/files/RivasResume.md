@@ -22,11 +22,13 @@
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.5em; margin-bottom:0;"><b>Capital One</b> &emsp;&emsp; Plano, TX </span></p>
 
 **Principal Associate Software Engineer** &emsp;&emsp;   June 2021 – Present
-* Helped design and build a Go-based MCP server backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf.
+* Co-engineered an enterprise-scale, Go-based MCP server for the Internal Developer Platform (IDP), backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf.
 * Drove adoption to 20% of all application creation company-wide; the server now lets developers onboard hundreds of applications in a single batch instead of one at a time through the UI, saving many engineering hours.
 * Designed and implemented a Go CLI providing developers access to Capital One internal tools, including application registration lookup and creation, with skills registered to the CLI that allow agents to use it to continue scaffolding their applications.
-* Own authentication for Capital One's internal developer catalog, built on Spotify Backstage, which every developer at the company uses to track and manage their applications; standardized authentication to meet company policy where Backstage's default policies fell short, now also securing access for the MCP server, CLI, and external consumer API access.
-* Led a team of engineers maintaining and enhancing an enterprise wide internal product that manages the deployment of enterprise products to production. The product manages an average of 100 production releases per day across the enterprise.
+* Own authentication for Capital One's Internal Developer Platform (IDP), built on Spotify Backstage, which every developer at the company uses to track and manage their applications; standardized authentication to meet company policy where Backstage's default policies fell short, now also securing access for the MCP server, CLI, and external consumer API access.
+* Architected and led a team in implementing an on-demand deployment plugin for the IDP that lets users deploy applications to any environment, including production, by verifying they meet all Capital One release checks for pre-approval; implemented GitHub auth for access control, securely handing the token off to the backend and Temporal server, and used Temporal to manage releases end-to-end for stability and retryability.
+* This IDP plugin remains widely used today for on-demand deployments and immediate rollbacks (100+ per day) across the company, maintaining a >95% release success rate.
+* Led a team of engineers maintaining and enhancing an enterprise wide internal product that managed the deployment of enterprise products to production, averaging 100 production releases per day across the enterprise. This product was later sunset in favor of the on-demand deployment plugin after the move to the IDP.
 * Improved the first time deployment success of enterprise applications using our product to 93% success rate from 70%. Continuing to work on improving this further by analyzing failures streamed to our data lake and working with our dependencies to fix issues and shift left possible failure scenarios.
 * Created new processes allowing users to transition away from legacy ECS cluster infrastructure to ECS Fargate. This process allows the user to deploy and test both infrastructures simultaneously for quicker transition speeds.
 * Led a team of interns in designing, developing and deploying a new MFE that displayed the monthly cost of the users' deployed infrastructure with a quick breakdown on the types of resources they had provisioned. This led to higher discussion between our users on infrastructure costs and a reduction in spending across the organization.
@@ -35,12 +37,14 @@
 * Moved CICD pipeline from Jenkins to Lambda Step Functions, ensuring greater scalability, lower costs and more secure access to AWS resources and secrets
 * Architected and deployed a Java SDK to provide annotation-driven auditing capabilities to Spring Boot applications, including information about the incoming request, the instance that received it, and the response, providing Cyber with the ability to better track requests coming into Capital One applications
 * Engineered a Java SDK to standardize application logs and include pertinent information about the application instance, including information about the EC2 machine, Docker instance and ECS Task
-* Developed and integrated SpringBoot backend and Lambda functions to ensure applications on our pipeline meet Company Policy for Advanced Monitoring
+* Developed and integrated SpringBoot backend and Lambda functions to power a UI where teams could check their Advanced Monitoring compliance status, verifying metrics in Prometheus (later New Relic), traces in New Relic/AppDynamics, logs in Splunk, and alerting configured in PagerDuty
+* Extended this tooling to automatically onboard non-compliant applications onto the required monitoring stack, injecting our metrics libraries directly into user repositories and provisioning a PagerDuty service with user-supplied escalation policies for alerting
 
 **Associate Software Engineer** &emsp;&emsp; September 2017 – June 2018
 * Built a Java SDK for the purpose of creating a simple, out-of-the-box metrics solution for SpringBoot Applications at Capital One. These metrics follow the Four Golden Signals outlined in Google's whitepaper.
 * Co-developed and maintained a JavaScript Express and Python Flask metrics SDK for HTTP request and System monitoring
 * Maintained a Prometheus cluster that scrapes metrics from Capital One applications and displays them on Grafana
+* These metrics libraries were adopted org-wide alongside our Grafana dashboards, becoming our organization's single source of truth for application and infrastructure metrics; this standardized how teams emitted and reviewed metrics and gave every adopting application an out-of-the-box dashboard with easy access to alert creation via PagerDuty
 * Designed and implemented an automated testing framework for applications to ensure they produce the metrics compliant with Company Policies
 * Co-developed and maintained a CICD pipeline enabling the continuous, automated deployment of Capital One applications, integrated with real-time advanced monitoring of metrics, logs and distributed tracing information
 
