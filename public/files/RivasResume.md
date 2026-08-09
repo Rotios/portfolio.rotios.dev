@@ -1,8 +1,16 @@
 <p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2.5em; margin-bottom:0;">Jose Rivas</span></p>
 <p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2em; margin-bottom:0;"><i>Senior Software Engineer</i></span></p>
 
-<p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.3em;"><b>Website&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Github&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Email&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Phone</b></span></p>
-<p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.2em;"><a href=https://www.github.com/rotios>github.com/rotios</a> &emsp; &emsp; <a href=https://www.github.com/rotios>github.com/rotios</a> &emsp; &emsp;  <a href=jose.j.rivasgarcia@gmail.com>jose.j.rivasgarcia@gmail.com</a>&emsp; &emsp; (916) 304-6262</span></p>
+<br>
+
+<p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.1em;">Senior software engineer with 8+ years building developer platforms and CI/CD infrastructure at Capital One, currently focused on agentic developer tooling &mdash; MCP servers, Temporal workflows, and Claude/Windsurf-driven application onboarding. Track record of measurable delivery impact, including raising first-time deployment success from 70% to 93% across an enterprise release platform.</span></p>
+
+<br>
+
+<p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.3em;"><b>Website&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Github&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;LinkedIn&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Email&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Phone</b></span></p>
+<p align="center" style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.2em;"><a href=https://rotios.dev>rotios.dev</a> &emsp; &emsp; <a href=https://www.github.com/rotios>github.com/rotios</a> &emsp; &emsp; <a href=https://www.linkedin.com/in/rotios>linkedin.com/in/rotios</a> &emsp; &emsp; <a href=mailto:jose.j.rivasgarcia@gmail.com>jose.j.rivasgarcia@gmail.com</a>&emsp; &emsp; <a href=tel:+19163046262>(916) 304-6262</a></span></p>
+
+<br>
 
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2em; margin-bottom:0;">Education</span></p>
 
@@ -14,7 +22,8 @@
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.5em; margin-bottom:0;"><b>Capital One</b> &emsp;&emsp; Plano, TX </span></p>
 
 **Principal Associate Software Engineer** &emsp;&emsp;   June 2021 – Present
-* Helped design and build a Go-based MCP server backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf; reached 20% adoption of all application creation company-wide and now lets developers onboard hundreds of applications in a single batch instead of one at a time through the UI, saving many engineering hours.
+* Helped design and build a Go-based MCP server backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf.
+* Drove adoption to 20% of all application creation company-wide; the server now lets developers onboard hundreds of applications in a single batch instead of one at a time through the UI, saving many engineering hours.
 * Designed and implemented a Go CLI providing developers access to Capital One internal tools, including application registration lookup and creation, with skills registered to the CLI that allow agents to use it to continue scaffolding their applications.
 * Own authentication for Capital One's internal developer catalog, built on Spotify Backstage, which every developer at the company uses to track and manage their applications; standardized authentication to meet company policy where Backstage's default policies fell short, now also securing access for the MCP server, CLI, and external consumer API access.
 * Led a team of engineers maintaining and enhancing an enterprise wide internal product that manages the deployment of enterprise products to production. The product manages an average of 100 production releases per day across the enterprise.
