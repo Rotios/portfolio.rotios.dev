@@ -13,11 +13,14 @@
 
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.5em; margin-bottom:0;"><b>Capital One</b> &emsp;&emsp; Plano, TX </span></p>
 
-**Principle Associate Software Engineer** &emsp;&emsp;   June 2021 – Present
-* Lead a team of engineers maintaining and enhancing an enterprise wide internal product that manages the deployment of enterprise products to production. The product manages an average of 100 production releases per day across the enterprise.
-* Improved the first time deployment success of enterprise applications using our product to 93% succes rate from 70%. Continuing to work on improving this further by analyzing failures streamed to our data lake and working with our dependencies to fix issues and shift left possible failure scenarios.
+**Principal Associate Software Engineer** &emsp;&emsp;   June 2021 – Present
+* Helped design and build a Go-based MCP server backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf; reached 20% adoption of all application creation company-wide and now lets developers onboard hundreds of applications in a single batch instead of one at a time through the UI, saving many engineering hours.
+* Designed and implemented a Go CLI providing developers access to Capital One internal tools, including application registration lookup and creation, with skills registered to the CLI that allow agents to use it to continue scaffolding their applications.
+* Own authentication for Capital One's internal developer catalog, built on Spotify Backstage, which every developer at the company uses to track and manage their applications; standardized authentication to meet company policy where Backstage's default policies fell short, now also securing access for the MCP server, CLI, and external consumer API access.
+* Led a team of engineers maintaining and enhancing an enterprise wide internal product that manages the deployment of enterprise products to production. The product manages an average of 100 production releases per day across the enterprise.
+* Improved the first time deployment success of enterprise applications using our product to 93% success rate from 70%. Continuing to work on improving this further by analyzing failures streamed to our data lake and working with our dependencies to fix issues and shift left possible failure scenarios.
 * Created new processes allowing users to transition away from legacy ECS cluster infrastructure to ECS Fargate. This process allows the user to deploy and test both infrastructures simultaneously for quicker transition speeds.
-* Lead a team of interns in designing, developing and deploying a new MFE that displayed the monthly cost of the users' deployed infrastructure with a quick breakdown on the types of resources they had provisioned. This lead to higher discussion between our users on infrastructure costs and a reduction in spending across the organization.
+* Led a team of interns in designing, developing and deploying a new MFE that displayed the monthly cost of the users' deployed infrastructure with a quick breakdown on the types of resources they had provisioned. This lead to higher discussion between our users on infrastructure costs and a reduction in spending across the organization.
 
 **Senior Associate Software Engineer** &emsp;&emsp;   June 2018 – June 2021
 * Moved CICD pipeline from Jenkins to Lambda Step Functions, ensuring greater scalability, lower costs and more secure access to AWS resources and secrets
@@ -26,7 +29,7 @@
 * Designed and implemented SpringBoot backend and Lambda functions to ensure applications on our pipeline meet Company Policy for Advanced Monitoring
 
 **Associate Software Engineer** &emsp;&emsp; September 2017 – June 2018
-* Designed and implemented a J ava SDK for the purpose of creating a simple, out-of-the-box metrics solution for SpringBoot Applications at Capital One. These metrics follow the Four Golden Signals outlined in Google's whitepaper.
+* Designed and implemented a Java SDK for the purpose of creating a simple, out-of-the-box metrics solution for SpringBoot Applications at Capital One. These metrics follow the Four Golden Signals outlined in Google's whitepaper.
 * Helped develop and maintain a JavaScript Express and Python Flask metrics SDK for HTTP request and System monitoring
 * Help maintain a Prometheus cluster that scrapes metrics from Capital One applications and displays them on Grafana
 * Designed and implemented an automated testing framework for applications to ensure they produce the metrics compliant with Company Policies
@@ -34,8 +37,9 @@
 
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2em;">Skills</span></p>
 
-* **Languages:** Java, Python, JavaScript
+* **Languages:** Java, Python, JavaScript, Go
 * **Tools/Platforms/Frameworks:** LitJS, SpringBoot, AWS Compute \(Lambda/ECS/Fargate\), AWS DynamoDB & Aurora, Git/Github, Prometheus/Grafana, New Relic, Splunk, Elastic (Formerly ELK), Spotify Backstage
+* **AI/Agentic Tooling:** MCP (Model Context Protocol), Temporal, Claude, Windsurf, Agent Skills / Tool-use Design
 
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2em;">Certificates</span></p>
 
