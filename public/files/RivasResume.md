@@ -36,18 +36,14 @@
 
 **Senior Associate Software Engineer** &emsp;&emsp;   June 2018 – June 2021
 * Moved CICD pipeline from Jenkins to Lambda Step Functions, ensuring greater scalability, lower costs and more secure access to AWS resources and secrets
-* Architected and deployed a Java SDK to provide annotation-driven auditing capabilities to Spring Boot applications, including information about the incoming request, the instance that received it, and the response, providing Cyber with the ability to better track requests coming into Capital One applications
-* Engineered a Java SDK to standardize application logs and include pertinent information about the application instance, including information about the EC2 machine, Docker instance and ECS Task
+* Architected and deployed a suite of Java SDKs for Spring Boot applications that standardized application logging and provided annotation-driven auditing capabilities, enabling Cyber to securely track incoming requests.
 * Developed and integrated SpringBoot backend and Lambda functions to power a UI where teams could check their Advanced Monitoring compliance status, verifying metrics in Prometheus (later New Relic), traces in New Relic/AppDynamics, logs in Splunk, and alerting configured in PagerDuty
 * Extended this tooling to automatically onboard non-compliant applications onto the required monitoring stack, injecting our metrics libraries directly into user repositories and provisioning a PagerDuty service with user-supplied escalation policies for alerting
 
 **Associate Software Engineer** &emsp;&emsp; September 2017 – June 2018
-* Built a Java SDK for the purpose of creating a simple, out-of-the-box metrics solution for SpringBoot Applications at Capital One. These metrics follow the Four Golden Signals outlined in Google's whitepaper.
-* Co-developed and maintained a JavaScript Express and Python Flask metrics SDK for HTTP request and System monitoring
-* Maintained a Prometheus cluster that scrapes metrics from Capital One applications and displays them on Grafana
-* These metrics libraries were adopted org-wide alongside our Grafana dashboards, becoming our organization's single source of truth for application and infrastructure metrics; this standardized how teams emitted and reviewed metrics and gave every adopting application an out-of-the-box dashboard with easy access to alert creation via PagerDuty
-* Designed and implemented an automated testing framework for applications to ensure they produce the metrics compliant with Company Policies
-* Co-developed and maintained a CICD pipeline enabling the continuous, automated deployment of Capital One applications, integrated with real-time advanced monitoring of metrics, logs and distributed tracing information
+* Engineered a suite of metrics SDKs based on Google's Four Golden Signals, headlined by a Java SDK that provided a fully out-of-the-box telemetry solution for Spring Boot applications, alongside companion libraries for JavaScript Express and Python Flask.
+* Managed a Prometheus cluster and drove org-wide adoption of these libraries, establishing a single source of truth that gave every adopting application instant Grafana dashboards and streamlined PagerDuty alerting.
+* Co-developed CI/CD pipelines and automated testing frameworks to enable continuous deployment and enforce strict enterprise monitoring compliance.
 
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:2em;">Skills</span></p>
 
