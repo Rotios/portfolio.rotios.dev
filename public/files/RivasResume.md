@@ -22,7 +22,7 @@
 <p style="margin-bottom:0.5rem;"><span style="font-family:Didot; font-size:1.5em; margin-bottom:0;"><b>Capital One</b> &emsp;&emsp; Plano, TX </span></p>
 
 **Principal Associate Software Engineer** &emsp;&emsp;   June 2021 – Present
-* Co-engineered an enterprise-scale, Go-based MCP server for the Internal Developer Platform (IDP), backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf.
+* Co-engineered an enterprise-scale, Go-based MCP server for the Internal Developer Platform (IDP), backed by Temporal, enabling developers to agentically design and onboard new applications onto Capital One infrastructure using Claude and Windsurf; the server also installs enterprise-approved coding standard skills so developers can keep coding and scaffolding compliant applications well past initial onboarding.
 * Drove adoption to 20% of all application creation company-wide; the server now lets developers onboard hundreds of applications in a single batch instead of one at a time through the UI, saving many engineering hours.
 * Designed and implemented a Go CLI providing developers access to Capital One internal tools, including application registration lookup and creation, with skills registered to the CLI that allow agents to use it to continue scaffolding their applications.
 * Own authentication for Capital One's Internal Developer Platform (IDP), built on Spotify Backstage, which every developer at the company uses to track and manage their applications; standardized authentication to meet company policy where Backstage's default policies fell short, now also securing access for the MCP server, CLI, and external consumer API access.
