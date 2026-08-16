@@ -67,12 +67,19 @@ board::before, board::after{
   color: #fc543c;
 }
 
+@keyframes highlight-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
 .highlight-bomb {
-  background: yellow !important
+  background: yellow !important;
+  animation: highlight-flash 0.3s ease-in-out 3;
 }
 
 .highlight-safe {
-  background: green !important
+  background: green !important;
+  animation: highlight-flash 0.3s ease-in-out 3;
 }
 
 .game-title {

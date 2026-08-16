@@ -47,9 +47,9 @@ export default class Solver extends Component {
 
         if (expansions != null && expansions.clickable != null && expansions.clickable.length > 0) {
             let cell = expansions.clickable[0]
-            console.log(cell)
+            let numberCell = cell.numberCells[0]
 
-            this.state.board.highlightCell(cell.xPos, cell.yPos, ' highlight-safe')
+            this.state.board.highlightCell(numberCell.xPos, numberCell.yPos, ' highlight-safe')
         }
     }
 
@@ -182,7 +182,7 @@ export default class Solver extends Component {
         expansions.map((exp) => {
             let x = exp.xPos
             let y = exp.yPos
-            let bombKey = x * height + y
+            let numberKey = x * height + y
 
             let minX = (x > 0) ? x-1: x
 
@@ -191,20 +191,20 @@ export default class Solver extends Component {
                 for (minY; minY < height && minY < y + 2; minY++) {
                     if (data[minX][minY].isHidden && !data[minX][minY].isFlagged) {
                         let cellKey = minX * height + minY
-                        let bombKeys = clickableMap.get(cellKey) || new Set()
-                        bombKeys.add(bombKey)
-                        clickableMap.set(cellKey, bombKeys)
+                        let numberKeys = clickableMap.get(cellKey) || new Set()
+                        numberKeys.add(numberKey)
+                        clickableMap.set(cellKey, numberKeys)
                     }
                 }
             }
         })
 
-        let clickable = [...clickableMap.entries()].map(([cellKey, bombKeys]) => ({
+        let clickable = [...clickableMap.entries()].map(([cellKey, numberKeys]) => ({
             xPos: Math.floor(cellKey / height),
             yPos: cellKey % height,
-            bombs: [...bombKeys].map((bombKey) => ({
-                xPos: Math.floor(bombKey / height),
-                yPos: bombKey % height
+            numberCells: [...numberKeys].map((numberKey) => ({
+                xPos: Math.floor(numberKey / height),
+                yPos: numberKey % height
             }))
         }))
 

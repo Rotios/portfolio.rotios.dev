@@ -141,10 +141,20 @@ export default class Board extends Component {
     }
 
     highlightCell(x, y, color) {
+        // Clear the highlight first so the flash animation restarts even when
+        // re-highlighting a cell that's already highlighted (a re-applied,
+        // identical class name wouldn't retrigger the CSS animation on its own).
         let data = this.state.board
-        let cell = data[x][y]
-        cell.highlight = (color != null) ? " " + color : ""
+        data[x][y].highlight = ""
         this.updateBoard(data)
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                let latest = this.state.board
+                latest[x][y].highlight = (color != null) ? " " + color : ""
+                this.updateBoard(latest)
+            })
+        })
     }
 
     revealEmpty(x, y) {
