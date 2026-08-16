@@ -2,21 +2,23 @@
 import React, { Component } from "react"
 import Cell from "./Cell"
 import Solver from './Solver'
+import { Chip } from "@heroui/chip"
 import './Minesweeper.css'
 
 export default class Board extends Component {
     constructor(props) {
         super(props);
-        this.state = this.initBoard(this.props.height, this.props.width, this.props.numMines)    
+        this.state = this.initEmptyBoard(this.props.height, this.props.width)
         this.state['revealed'] = 0
         this.state['gameOver'] = false
         this.state['won'] = false
+        this.state['minesPlaced'] = false
     }
-    
+
     async componentDidMount() {
     }
 
-    initBoard(height, width, mines) {
+    initEmptyBoard(height, width) {
         let x = 0
 
         let arr = new Array()
@@ -26,9 +28,9 @@ export default class Board extends Component {
             let innerArr = new Array()
             for (y; y<height; y++) {
                 let cellData = {
-                    isMine: false, 
-                    isFlagged:false, 
-                    isHidden:true, 
+                    isMine: false,
+                    isFlagged:false,
+                    isHidden:true,
                     value:0,
                     highlight: ""
                 }
@@ -38,19 +40,38 @@ export default class Board extends Component {
             arr.push(innerArr)
         }
 
-        let count = 0
-        while (count < mines) {
-            let nextPos = this.getNextMinePos(height, width)
+        return {board: arr}
+    }
 
-            if (!arr[nextPos[0]][nextPos[1]].isMine) {
-                arr[nextPos[0]][nextPos[1]].isMine = true
-                arr[nextPos[0]][nextPos[1]].value = -1
-            
+    // Places mines after the first click so the clicked cell and its
+    // neighbors are never mines - matches the classic Minesweeper guarantee
+    // that your opening click is always safe.
+    placeMines(data, height, width, mines, safeX, safeY) {
+        let safeCells = new Set()
+        let minX = (safeX > 0) ? safeX - 1 : safeX
+        for (minX; minX < safeX + 2 && minX < width; minX++) {
+            let minY = (safeY > 0) ? safeY - 1 : safeY
+            for (minY; minY < safeY + 2 && minY < height; minY++) {
+                safeCells.add(minX + ',' + minY)
+            }
+        }
+
+        let target = Math.min(mines, (width * height) - safeCells.size)
+
+        let count = 0
+        while (count < target) {
+            let nextPos = this.getNextMinePos(height, width)
+            let key = nextPos[0] + ',' + nextPos[1]
+
+            if (!data[nextPos[0]][nextPos[1]].isMine && !safeCells.has(key)) {
+                data[nextPos[0]][nextPos[1]].isMine = true
+                data[nextPos[0]][nextPos[1]].value = -1
+
                 count += 1
             }
         }
 
-        return this.updateMineCounts(arr, width, height)
+        return this.updateMineCounts(data, width, height).board
     }
 
     updateMineCounts(data, width, height) {
@@ -77,13 +98,14 @@ export default class Board extends Component {
         return {board: data}
     }
 
-    hideAll() { 
-        this.setState(this.initBoard(this.props.height, this.props.width, this.props.numMines))
+    hideAll() {
+        this.setState(this.initEmptyBoard(this.props.height, this.props.width))
 
         this.setState({
             gameOver: false,
             won: false,
-            revealed : 0
+            revealed : 0,
+            minesPlaced: false
         })
     }
 
@@ -98,13 +120,18 @@ export default class Board extends Component {
 
     handleCellClick(x,y) {
         let data = this.state.board
-        let cell = data[x][y]
-
-        let revealed = this.state.revealed
 
         if (this.state.gameOver) {
             this.hideAll()
         }
+
+        if (!this.state.minesPlaced) {
+            data = this.placeMines(data, this.props.height, this.props.width, this.props.numMines, x, y)
+            this.setState({board: data, minesPlaced: true})
+        }
+
+        let cell = data[x][y]
+        let revealed = this.state.revealed
 
         if (cell.isHidden === false || cell.isFlagged === true) {
             this.checkWin(revealed)
@@ -256,34 +283,25 @@ export default class Board extends Component {
     }
 
     render() {
-        let arr = this.renderCells()   
-        let s = 'Game On'
+        let arr = this.renderCells()
+        let status = 'Game On'
+        let color = 'default'
 
         if (this.state.gameOver) {
-            s = (this.state.won) ? 'You Won' : 'Game Over'
+            status = (this.state.won) ? 'You Won' : 'Game Over'
+            color = (this.state.won) ? 'success' : 'danger'
         }
+
         return (
             <section>
-                <section>
-                    <h1 className="game-title">{s}</h1>
+                <section className="game-title">
+                    <Chip color={color} variant="flat" size="lg">{status}</Chip>
                 </section>
                 <section className="board">
                     {arr}
                 </section>
 
-                <Solver board={this} height={this.props.height} width={this.props.height} numMines={this.props.numMines}/>
-                
-                {/* <label for="fname">Height: </label>
-                <input type="text" id="fname" name="height" placeholder="Number"/>
-                
-                <label for="fname">Width: </label>
-                <input type="text" id="fname" name="width" placeholder="Number"/>
-                <br/>
-
-                
-                <label for="fname">Mines: </label>
-                <input type="text" id="fname" name="mineNum" placeholder="Number"/> */}
-                
+                <Solver board={this} height={this.props.height} width={this.props.width} numMines={this.props.numMines}/>
             </section>
         );
     }
