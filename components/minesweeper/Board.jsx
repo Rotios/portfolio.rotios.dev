@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import Cell from "./Cell"
 import Solver from './Solver'
+import { Chip } from "@heroui/chip"
 import './Minesweeper.css'
 
 export default class Board extends Component {
@@ -282,16 +283,19 @@ export default class Board extends Component {
     }
 
     render() {
-        let arr = this.renderCells()   
-        let s = 'Game On'
+        let arr = this.renderCells()
+        let status = 'Game On'
+        let color = 'default'
 
         if (this.state.gameOver) {
-            s = (this.state.won) ? 'You Won' : 'Game Over'
+            status = (this.state.won) ? 'You Won' : 'Game Over'
+            color = (this.state.won) ? 'success' : 'danger'
         }
+
         return (
             <section>
-                <section>
-                    <h1 className="game-title">{s}</h1>
+                <section className="game-title">
+                    <Chip color={color} variant="flat" size="lg">{status}</Chip>
                 </section>
                 <section className="board">
                     {arr}

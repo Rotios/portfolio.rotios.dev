@@ -36,11 +36,12 @@ board::before, board::after{
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.board-settings input[type=text] {
-  width: 5rem;
+.board-settings-input {
+  width: 6rem;
 }
 .row {
   display: flex;
@@ -70,11 +71,17 @@ board::before, board::after{
   max-height: calc(100vh - 12rem);
 }
 
-.minesweeper-fullscreen-close {
+.minesweeper-fullscreen-close-wrap {
   position: fixed;
   top: 1rem;
   right: 1.5rem;
   z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.minesweeper-fullscreen-close {
   background: transparent;
   border: none;
   color: #fff;
@@ -155,37 +162,6 @@ board::before, board::after{
   background-color: #4CAF50; /* Green */
   color: white;
 }
-
-label {
-  margin-left: 1rem;
-}
-
-input[type=text], select {
-  width: 30%;
-  padding: 1rem 1rem;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-left: 1rem
-}
-
-input[type=submit] {
-  width: 30%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
 
 .color--skyBlue {
 color: rgb(52, 152, 219);

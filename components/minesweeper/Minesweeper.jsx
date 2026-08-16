@@ -1,9 +1,11 @@
 'use client'
 
-import React, { Component } from "react"
+import { Component } from "react"
 import './Minesweeper.css'
 import Board from './Board'
 import { Button } from "@heroui/button"
+import { Input } from "@heroui/input"
+import { Kbd } from "@heroui/kbd"
 
 const DEFAULT_WIDTH = 10
 const DEFAULT_HEIGHT = 10
@@ -16,7 +18,6 @@ export default class Minesweeper extends Component {
         super(props);
 
         this.state = {
-          isHidden: true,
           width: DEFAULT_WIDTH,
           height: DEFAULT_HEIGHT,
           numMines: DEFAULT_MINES,
@@ -85,38 +86,46 @@ export default class Minesweeper extends Component {
       return (
           <div className={gameClassName}>
             {fullscreen &&
-                <button type="button" className="minesweeper-fullscreen-close"
-                    onClick={this.closeFullscreen} aria-label="Exit fullscreen">
-                    &times;
-                </button>
+                <div className="minesweeper-fullscreen-close-wrap">
+                    <Kbd keys={["escape"]} />
+                    <button type="button" className="minesweeper-fullscreen-close"
+                        onClick={this.closeFullscreen} aria-label="Exit fullscreen">
+                        &times;
+                    </button>
+                </div>
             }
             <br/>
             <form className="board-settings" onSubmit={this.applySettings}>
-                <label htmlFor="board-width">Width:</label>
-                <input type="text" id="board-width" placeholder="Number"
+                <Input type="number" label="Width" variant="flat" size="sm"
+                    className="board-settings-input"
+                    min={MIN_DIM} max={MAX_DIM}
                     value={this.state.widthInput}
-                    onChange={(e) => this.setState({widthInput: e.target.value})} />
+                    onValueChange={(value) => this.setState({widthInput: value})} />
 
-                <label htmlFor="board-height">Height:</label>
-                <input type="text" id="board-height" placeholder="Number"
+                <Input type="number" label="Height" variant="flat" size="sm"
+                    className="board-settings-input"
+                    min={MIN_DIM} max={MAX_DIM}
                     value={this.state.heightInput}
-                    onChange={(e) => this.setState({heightInput: e.target.value})} />
+                    onValueChange={(value) => this.setState({heightInput: value})} />
 
-                <label htmlFor="board-mines">Mines:</label>
-                <input type="text" id="board-mines" placeholder="Number"
+                <Input type="number" label="Mines" variant="flat" size="sm"
+                    className="board-settings-input"
+                    min={1} max={this.maxMines(width, height)}
                     value={this.state.minesInput}
-                    onChange={(e) => this.setState({minesInput: e.target.value})} />
+                    onValueChange={(value) => this.setState({minesInput: value})} />
 
-                <input type="submit" value="New Game" />
+                <Button className="hint-buttons" type="submit">
+                    New Game
+                </Button>
 
                 {!fullscreen &&
-                    <Button className="hint-buttons" type="button" onClick={this.openFullscreen}>
+                    <Button className="hint-buttons" type="button" onPress={this.openFullscreen}>
                         Fullscreen
                     </Button>
                 }
             </form>
-              <Board key={`${width}-${height}-${numMines}-${gameId}`} height={height} width={width} numMines={numMines}></Board>
+            <Board key={`${width}-${height}-${numMines}-${gameId}`} height={height} width={width} numMines={numMines} />
           </div>
       );
     }
-  }
+}
