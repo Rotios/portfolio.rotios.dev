@@ -12,6 +12,10 @@ export const siteConfig = {
       label: "Projects",
       href: "/projects",
     },
+    {
+      label: "Blog",
+      href: "/blog",
+    },
   ],
   links: {
     github: "https://github.com/rotios",
