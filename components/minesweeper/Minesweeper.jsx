@@ -13,6 +13,10 @@ const DEFAULT_MINES = 12
 const MIN_DIM = 5
 const MAX_DIM = 40
 
+function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value))
+}
+
 export default class Minesweeper extends Component {
     constructor(props) {
         super(props);
@@ -48,17 +52,17 @@ export default class Minesweeper extends Component {
     applySettings(e) {
         e.preventDefault()
 
-        let width = Math.min(MAX_DIM, Math.max(MIN_DIM, parseInt(this.state.widthInput, 10) || DEFAULT_WIDTH))
-        let height = Math.min(MAX_DIM, Math.max(MIN_DIM, parseInt(this.state.heightInput, 10) || DEFAULT_HEIGHT))
-        let numMines = Math.min(this.maxMines(width, height), Math.max(1, parseInt(this.state.minesInput, 10) || DEFAULT_MINES))
+        let width = clamp(parseInt(this.state.widthInput, 10) || DEFAULT_WIDTH, MIN_DIM, MAX_DIM)
+        let height = clamp(parseInt(this.state.heightInput, 10) || DEFAULT_HEIGHT, MIN_DIM, MAX_DIM)
+        let numMines = clamp(parseInt(this.state.minesInput, 10) || DEFAULT_MINES, 1, this.maxMines(width, height))
 
-        this.setState((prevState) => ({
+        this.setState({
             width, height, numMines,
             widthInput: String(width),
             heightInput: String(height),
             minesInput: String(numMines),
-            gameId: prevState.gameId + 1
-        }))
+            gameId: this.state.gameId + 1
+        })
     }
 
     openFullscreen() {

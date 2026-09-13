@@ -43,18 +43,27 @@ export default class Board extends Component {
         return {board: arr}
     }
 
+    // Invokes fn(nx, ny) for (x, y) and every in-bounds neighbor in its 3x3
+    // block - the bounds-clamped neighborhood used for both mine placement
+    // and reveal/count propagation.
+    forEachNeighbor(x, y, width, height, fn) {
+        let minX = (x > 0) ? x - 1 : x
+        for (minX; minX < x + 2 && minX < width; minX++) {
+            let minY = (y > 0) ? y - 1 : y
+            for (minY; minY < y + 2 && minY < height; minY++) {
+                fn(minX, minY)
+            }
+        }
+    }
+
     // Places mines after the first click so the clicked cell and its
     // neighbors are never mines - matches the classic Minesweeper guarantee
     // that your opening click is always safe.
     placeMines(data, height, width, mines, safeX, safeY) {
         let safeCells = new Set()
-        let minX = (safeX > 0) ? safeX - 1 : safeX
-        for (minX; minX < safeX + 2 && minX < width; minX++) {
-            let minY = (safeY > 0) ? safeY - 1 : safeY
-            for (minY; minY < safeY + 2 && minY < height; minY++) {
-                safeCells.add(minX + ',' + minY)
-            }
-        }
+        this.forEachNeighbor(safeX, safeY, width, height, (nx, ny) => {
+            safeCells.add(nx + ',' + ny)
+        })
 
         let target = Math.min(mines, (width * height) - safeCells.size)
 
@@ -71,7 +80,7 @@ export default class Board extends Component {
             }
         }
 
-        return this.updateMineCounts(data, width, height).board
+        return this.updateMineCounts(data, width, height)
     }
 
     updateMineCounts(data, width, height) {
@@ -81,21 +90,16 @@ export default class Board extends Component {
 
             for (y; y<height; y++) {
                 if (data[x][y].isMine) {
-                    let minX = (x > 0) ? x-1 : x
-                    for (minX; minX < x+2 && minX < width; minX++) {
-                        let minY = (y>0) ? y - 1 : y
-
-                        for (minY; minY< (y+2) && minY < height; minY++) {
-                            if (!data[minX][minY].isMine) {
-                                data[minX][minY].value+=1
-                            }
+                    this.forEachNeighbor(x, y, width, height, (nx, ny) => {
+                        if (!data[nx][ny].isMine) {
+                            data[nx][ny].value += 1
                         }
-                    }
+                    })
                 }
             }
         }
 
-        return {board: data}
+        return data
     }
 
     hideAll() {
@@ -198,23 +202,17 @@ export default class Board extends Component {
             let cellX = cellLoc.xPos
             let cellY = cellLoc.yPos
 
+            this.forEachNeighbor(cellX, cellY, this.props.width, this.props.height, (minX, minY) => {
+                let curCell = data[minX][minY]
 
-            let minX = (cellX > 0) ? cellX - 1 : cellX;
-            for (minX; minX < cellX + 2 && minX < this.props.width; minX++) {
-                let minY = (cellY > 0) ? cellY - 1 : cellY;
-                for (minY; minY < (cellY + 2) && minY < this.props.height; minY++) {
-                    let curCell = data[minX][minY]
-
-                    if (curCell.isHidden === true) {
-                        curCell.isHidden = false
-                        revealed++
-                        if (curCell.value === 0) {
-                            stack.push({xPos: minX, yPos: minY})
-                        }
+                if (curCell.isHidden === true) {
+                    curCell.isHidden = false
+                    revealed++
+                    if (curCell.value === 0) {
+                        stack.push({xPos: minX, yPos: minY})
                     }
-                    
                 }
-            }
+            })
         }
 
         this.updateBoard(data);
