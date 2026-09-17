@@ -69,12 +69,21 @@ export default function ChessGame() {
     setLegalTargets([]);
     setPendingPromotion(null);
     setMoveError(null);
+    setIsAiThinking(false);
     setPlayerColor(color);
   }, []);
 
   // Let the AI move whenever it's not the human player's turn.
   useEffect(() => {
-    if (gameOver || pendingPromotion || gameState.turn === playerColor) return;
+    if (gameOver || pendingPromotion || gameState.turn === playerColor) {
+      // Defensive reset: guards against isAiThinking getting stranded at
+      // true if this effect is re-invoked (e.g. a dev Fast Refresh) while a
+      // prior chooseMove() call is still in flight — that stale call's own
+      // cancelled-guarded finally() intentionally skips clearing this flag.
+      setIsAiThinking(false);
+
+      return;
+    }
 
     let cancelled = false;
 
