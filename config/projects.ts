@@ -36,6 +36,16 @@ Game Stat Simulators was build using Lit JS and Vaadin components.`,
         imageSrc: '/minesweeper_detector.jpeg'
     },
     {
+        name: "Chess",
+        summary: "Play chess against a minimax AI, right in the browser.",
+        description: `A full chess implementation built with HeroUI and Tailwind, including legal move
+            generation, check/checkmate/stalemate detection, castling, en passant, and pawn promotion.
+            Play as white or black against an AI opponent with three difficulty levels.
+        `,
+        href: '/projects/chess',
+        imageSrc: '/chess.svg'
+    },
+    {
         name: "The Adventures of Fat Tone",
         summary: "Roguelike game using Rot.JS!",
         description: `A short Roguelike game written with the Rot.JS library. In conjunction with John Freeman - https://www.github.com/jcf1.`,
