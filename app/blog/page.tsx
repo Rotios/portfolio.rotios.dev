@@ -1,5 +1,6 @@
 import { title } from "@/components/primitives";
 import {Card, CardHeader, CardBody, CardFooter} from "@heroui/card";
+import {Chip} from "@heroui/chip";
 import {Divider} from "@heroui/divider";
 import {Link} from "@heroui/link";
 import { getSortedPosts } from "@/lib/blog";
@@ -21,7 +22,14 @@ export default function BlogPage() {
           <CardHeader className="flex gap-3">
             <Link color="foreground" href={`/blog/${post.slug}`}>
               <div className="flex flex-col text-left">
-                <p className="text-md">{post.title}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-md">{post.title}</p>
+                  {post.aiGenerated && (
+                    <Chip color="secondary" size="sm" variant="flat">
+                      Drafted by Claude
+                    </Chip>
+                  )}
+                </div>
                 <p className="text-small text-default-500">{post.summary}</p>
               </div>
             </Link>

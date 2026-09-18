@@ -11,6 +11,7 @@ export interface BlogPostSummary {
   title: string;
   summary: string;
   date: string;
+  aiGenerated: boolean;
 }
 
 export interface BlogPost extends BlogPostSummary {
@@ -38,6 +39,7 @@ export function getSortedPosts(): BlogPostSummary[] {
       title: data.title as string,
       summary: data.summary as string,
       date: data.date as string,
+      aiGenerated: Boolean(data.aiGenerated),
     };
   });
 
@@ -57,6 +59,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     title: data.title as string,
     summary: data.summary as string,
     date: data.date as string,
+    aiGenerated: Boolean(data.aiGenerated),
     contentHtml: processedContent.toString(),
   };
 }
