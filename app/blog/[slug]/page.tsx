@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { title } from "@/components/primitives";
+import { Chip } from "@heroui/chip";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 
 export function generateStaticParams() {
@@ -22,8 +23,13 @@ export default async function BlogPostPage({
       <div>
         <h1 className={title()}>{post.title}</h1>
       </div>
-      <div className="py-2 text-left">
+      <div className="flex items-center gap-2 py-2 text-left">
         <p className="text-small text-default-500">{post.date}</p>
+        {post.aiGenerated && (
+          <Chip color="secondary" size="sm" variant="flat">
+            Drafted by Claude
+          </Chip>
+        )}
       </div>
       <div
         className="py-4 text-left prose prose-neutral dark:prose-invert max-w-none"

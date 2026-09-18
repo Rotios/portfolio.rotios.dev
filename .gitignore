@@ -42,6 +42,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Local git worktrees (chess fanout, etc.)
+.worktrees/
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
